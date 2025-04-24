@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Project metadata -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Group ID (unique identifier for your organization or project group) -->
+    <groupId>com.example</groupId>  <!-- Your specified group ID -->
+    
+    <!-- Artifact ID (name of the project/artifact) -->
+    <artifactId>simplejavaapp-greeting</artifactId>  <!-- Your specified artifact ID -->
+
+    <!-- Version of the project (it can be something like 1.0-SNAPSHOT for development) -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Optional: Packaging type (JAR is common for Java applications) -->
+    <packaging>jar</packaging>
+
+    <!-- Dependencies (e.g., JUnit for testing) -->
+    <dependencies>
+        <!-- JUnit Dependency for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>  <!-- Test scope means this dependency is only used during testing -->
+        </dependency>
+    </dependencies>
+</project>
