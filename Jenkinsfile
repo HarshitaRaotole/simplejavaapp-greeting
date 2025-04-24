@@ -12,7 +12,8 @@ node {
         // Build the Java project using Maven
         stage('Build') {
             echo "Building the Java project..."
-            sh 'mvn clean install'  // Build the project
+            bat 'mvn clean install'
+  // Build the project
         }
 
         // Run unit tests using Maven
