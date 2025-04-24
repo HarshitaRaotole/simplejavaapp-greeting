@@ -1,39 +1,42 @@
-node {
-    // Define the project name
-    def projectName = 'simplejavaapp-greeting'
+pipeline {
+    agent any
 
-    try {
-        // Checkout the code from GitHub repository
+    stages {
         stage('Checkout') {
-            echo "Checking out the code from repository..."
-            checkout scm  // Fetch the code from the configured Git repository
+            steps {
+                echo 'Checking out the code from repository...'
+                checkout scm
+            }
         }
 
-        // Build the Java project using Maven
         stage('Build') {
-            echo "Building the Java project..."
-            bat 'mvn clean install'
-  // Build the project
+            steps {
+                echo 'Building the Java project...'
+                bat 'mvn clean install'
+            }
         }
 
-        // Run unit tests using Maven
         stage('Test') {
-            echo "Running unit tests..."
-            sh 'mvn test'  // Run the tests
+            steps {
+                echo 'Running unit tests...'
+                bat 'mvn test'
+            }
         }
 
-        // Deployment stage (This can be a placeholder or actual deployment)
-        stage('Deploy') {
-            echo "Deploying the application..."
-            // Placeholder for your deployment logic
-            echo "Deployment completed!"
+        stage('Package') {
+            steps {
+                echo 'Packaging the project...'
+                bat 'mvn package'
+            }
         }
+    }
 
-    } catch (Exception e) {
-        // Mark the build as failed if an error occurs
-        currentBuild.result = 'FAILURE'
-        throw e
-    } finally {
-        echo "Pipeline execution completed."
+    post {
+        success {
+            echo 'Build and Tests were successful.'
+        }
+        failure {
+            echo 'Build or Tests failed.'
+        }
     }
 }
